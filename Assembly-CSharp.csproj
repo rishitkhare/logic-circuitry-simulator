@@ -56,7 +56,12 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Sample.cs" />
+    <Compile Include="Assets/Scripts/NotGate.cs" />
+    <Compile Include="Assets/Scripts/Tester.cs" />
+    <Compile Include="Assets/Scripts/LogicNode.cs" />
+    <Compile Include="Assets/Scripts/InputNode.cs" />
+    <Compile Include="Assets/Scripts/NorGate.cs" />
+    <Compile Include="Assets/Scripts/NandGate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
