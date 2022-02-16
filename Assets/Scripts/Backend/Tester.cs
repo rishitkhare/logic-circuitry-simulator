@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using LogicGateNodes;
 /*
- * Used for console output ONLY! This component 
- * should not be used in the final product.
- */
+    * Used for console output ONLY! This component 
+    * should not be used in the final product.
+    */
 public class Tester : MonoBehaviour {
     /*
-     * The following method is run once 
-     * upon program startup. It acts as
-     * a main method.
-     */
+        * The following method is run once 
+        * upon program startup. It acts as
+        * a main method.
+        */
     void Start() {
         TestNotGate();
         TestNandGate();

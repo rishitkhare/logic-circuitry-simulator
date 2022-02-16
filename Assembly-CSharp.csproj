@@ -56,12 +56,19 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/NotGate.cs" />
-    <Compile Include="Assets/Scripts/Tester.cs" />
-    <Compile Include="Assets/Scripts/LogicNode.cs" />
-    <Compile Include="Assets/Scripts/InputNode.cs" />
-    <Compile Include="Assets/Scripts/NorGate.cs" />
-    <Compile Include="Assets/Scripts/NandGate.cs" />
+    <Compile Include="Assets/Scripts/Backend/InputNode.cs" />
+    <Compile Include="Assets/Scripts/Backend/Tester.cs" />
+    <Compile Include="Assets/Scripts/Backend/NotGate.cs" />
+    <Compile Include="Assets/Scripts/DraggableItem.cs" />
+    <Compile Include="Assets/Scripts/Backend/LogicNode.cs" />
+    <Compile Include="Assets/Scripts/KnobStatus.cs" />
+    <Compile Include="Assets/Scripts/LogicNodeBehaviour.cs" />
+    <Compile Include="Assets/Scripts/Backend/NandGate.cs" />
+    <Compile Include="Assets/Scripts/NotGateBehavior.cs" />
+    <Compile Include="Assets/Scripts/WireCreator.cs" />
+    <Compile Include="Assets/Scripts/Backend/NorGate.cs" />
+    <Compile Include="Assets/Scripts/WireNode.cs" />
+    <Compile Include="Assets/Scripts/Wire.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
