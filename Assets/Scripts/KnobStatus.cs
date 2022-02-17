@@ -23,7 +23,7 @@ public class KnobStatus : MonoBehaviour {
         powerGO = transform.Find("Power").gameObject;
     }
 
-    public void InvertStatus() {
-        Power = !Power;
+    public void SetStatus(bool state) {
+        Power = state;
     }
 }

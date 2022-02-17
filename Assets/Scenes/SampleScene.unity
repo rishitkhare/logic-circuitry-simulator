@@ -215,10 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -289,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &65734439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 208637660}
   - component: {fileID: 208637659}
   m_Layer: 5
-  m_Name: Status (1)
+  m_Name: Status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 382427296}
   - component: {fileID: 382427299}
   - component: {fileID: 382427298}
+  - component: {fileID: 382427297}
   m_Layer: 5
   m_Name: Output Gate
   m_TagString: Untagged
@@ -687,6 +688,18 @@ RectTransform:
   m_AnchoredPosition: {x: -55, y: 0}
   m_SizeDelta: {x: 110, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &382427297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382427295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc478ba4e759478c8489574e52bbb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &382427298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,6 +748,10 @@ PrefabInstance:
     - target: {fileID: 2932819379753314937, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_Name
       value: Not Gate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932819379753314937, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_Pivot.x
@@ -802,11 +819,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 168
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -138.2
+      value: -187
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1248,7 +1265,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929545415}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1291,6 +1308,7 @@ GameObject:
   - component: {fileID: 966430345}
   - component: {fileID: 966430344}
   - component: {fileID: 966430343}
+  - component: {fileID: 966430346}
   m_Layer: 5
   m_Name: Input Gate
   m_TagString: Untagged
@@ -1364,9 +1382,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 611543919}
-        m_TargetAssemblyTypeName: KnobStatus, Assembly-CSharp
-        m_MethodName: InvertStatus
+      - m_Target: {fileID: 966430346}
+        m_TargetAssemblyTypeName: InputNodeBehavior, Assembly-CSharp
+        m_MethodName: InvertState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1414,6 +1432,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966430341}
   m_CullTransparentMesh: 1
+--- !u!114 &966430346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966430341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfcf76ab98e4e4164b5ca027a1ef31dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1077940152 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
@@ -1436,7 +1466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1325529938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1686,7 +1716,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751867775}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1732,6 +1762,10 @@ PrefabInstance:
     - target: {fileID: 2932819379753314937, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_Name
       value: Not Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932819379753314937, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_Pivot.x
@@ -1799,11 +1833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -245
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 2932819379753314938, guid: 9e6b520dae44c4e34a48df01bdb49dab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

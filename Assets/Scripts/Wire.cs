@@ -23,18 +23,50 @@ public class Wire : MonoBehaviour {
 
     // update the line's endpoints to be at the nodes
     void Update() {
-        if(InputNode != null || OutputNode != null) {
+        UpdateLineEndpoints();
+        UpdateColor();
+    }
+
+    private void UpdateColor() {
+        if(OutputNode != null) {
+            bool? nodeValue = OutputNode.GetOutput();
+
+            
+
+            if(nodeValue == null || nodeValue == false) {
+                line.startColor = inactiveColor;
+                line.endColor = inactiveColor;
+
+                OutputNode.SetBlinker(false);
+                if (InputNode != null) {
+                    InputNode.SetBlinker(false);
+                }
+            }
+            else {
+                line.startColor = activeColor;
+                line.endColor = activeColor;
+
+                OutputNode.SetBlinker(true);
+                if(InputNode != null){
+                    InputNode.SetBlinker(true);
+                }
+            }
+        }
+    }
+
+    private void UpdateLineEndpoints() {
+        if (InputNode != null || OutputNode != null) {
             line.enabled = true;
             Vector3[] positions = new Vector3[2];
 
-            if(InputNode != null) {
+            if (InputNode != null) {
                 positions[0] = InputNode.transform.position;
             }
             else {
                 positions[0] = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
 
-            if(OutputNode != null) {
+            if (OutputNode != null) {
                 positions[1] = OutputNode.transform.position;
             }
             else {

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine;
 
 /*
@@ -53,7 +50,6 @@ public class WireCreator : MonoBehaviour {
 
         if(!node.isInput && OutputNode == null) {
             OutputNode = node;
-            Debug.Log("Attaching Output!");
             WireObjectUpdateEnds();
             return true;
         }
@@ -81,7 +77,7 @@ public class WireCreator : MonoBehaviour {
             Debug.LogError("Attempted faulty connection");
         }
 
-        // TODO connect shit
+        InputNode.SetInput(OutputNode);
 
         InputNode = null;
         OutputNode = null;

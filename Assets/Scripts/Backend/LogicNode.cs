@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+
 namespace LogicGateNodes {
     /*
      * This class is used as the base for all logic gates
@@ -11,7 +12,7 @@ namespace LogicGateNodes {
 
 
         // stores the input signals being recieved
-        public LogicNode[] Inputs { get; protected set; }
+        public LogicNode[] Inputs;
 
         // Getting the output involves taking all the inputs and synthesizing.
         // If any part of the circuit is open, return null.

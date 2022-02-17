@@ -62,13 +62,18 @@
     <Compile Include="Assets/Scripts/DraggableItem.cs" />
     <Compile Include="Assets/Scripts/Backend/LogicNode.cs" />
     <Compile Include="Assets/Scripts/KnobStatus.cs" />
-    <Compile Include="Assets/Scripts/LogicNodeBehaviour.cs" />
+    <Compile Include="Assets/Scripts/MonoBehaviour Logic Wrappers/LogicNodeBehavior.cs" />
     <Compile Include="Assets/Scripts/Backend/NandGate.cs" />
-    <Compile Include="Assets/Scripts/NotGateBehavior.cs" />
+    <Compile Include="Assets/Scripts/Wire.cs" />
+    <Compile Include="Assets/Scripts/MonoBehaviour Logic Wrappers/NotGateBehavior.cs" />
     <Compile Include="Assets/Scripts/WireCreator.cs" />
     <Compile Include="Assets/Scripts/Backend/NorGate.cs" />
     <Compile Include="Assets/Scripts/WireNode.cs" />
-    <Compile Include="Assets/Scripts/Wire.cs" />
+    <Compile Include="Assets/Scripts/MonoBehaviour Logic Wrappers/NorGateBehavior.cs" />
+    <Compile Include="Assets/Scripts/MonoBehaviour Logic Wrappers/InputNodeBehavior.cs" />
+    <Compile Include="Assets/Scripts/MonoBehaviour Logic Wrappers/NandGateBehavior.cs" />
+    <Compile Include="Assets/Scripts/Backend/OutputNode.cs" />
+    <Compile Include="Assets/Scripts/MonoBehaviour Logic Wrappers/OutputNodeBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

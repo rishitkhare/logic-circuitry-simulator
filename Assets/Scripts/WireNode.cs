@@ -5,7 +5,9 @@ using LogicGateNodes;
 public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
     private LogicNode logicNode;
-    private LogicNodeBehaviour logicMonoBehaviourComponent;
+    private LogicNodeBehavior logicMonoBehaviourComponent;
+
+    private GameObject blinker;
 
     [SerializeField]
     private bool _isInput;
@@ -13,9 +15,24 @@ public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         get { return _isInput; }
     }
 
-    void Awake() {
-        logicMonoBehaviourComponent = transform.GetComponentInParent<LogicNodeBehaviour>();
+    void Start() {
+        logicMonoBehaviourComponent = transform.parent.GetComponent<LogicNodeBehavior>();
         logicNode = logicMonoBehaviourComponent?.Node;
+
+        blinker = transform.Find("Power").gameObject;
+
+        if(logicNode == null) {
+            Debug.LogWarning("No gate component attached! (" + GetPath(gameObject) + ")");
+        }
+    }
+
+    private string GetPath(GameObject obj) {
+        string path = "/" + obj.name;
+        while (obj.transform.parent != null) {
+            obj = obj.transform.parent.gameObject;
+            path = "/" + obj.name + path;
+        }
+        return path;
     }
 
     public void OnDrag(PointerEventData eventData) {}
@@ -43,5 +60,22 @@ public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         else {
             WireCreator.instance.AttemptConnection();
         }
+    }
+
+    public void SetInput(WireNode other) {
+        if(!_isInput) {
+            Debug.LogWarning("Tried to set an input from an output");
+        }
+        else {
+            logicMonoBehaviourComponent.SetInput(0, other.logicMonoBehaviourComponent);
+        }
+    }
+
+    public bool? GetOutput() {
+        return logicMonoBehaviourComponent.Node.GetOutput();
+    }
+
+    public void SetBlinker(bool set) {
+        blinker.SetActive(set);
     }
 }
