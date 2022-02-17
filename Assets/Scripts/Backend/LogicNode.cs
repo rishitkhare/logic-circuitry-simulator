@@ -16,7 +16,17 @@ namespace LogicGateNodes {
 
         // Getting the output involves taking all the inputs and synthesizing.
         // If any part of the circuit is open, return null.
-        public bool? GetOutput() {
+
+        public bool? GetOutput() { return GetOutput(new List<LogicNode>()); }
+
+        public bool? GetOutput(List<LogicNode> stackTrace) {
+            // if we have already tried getting the output of this node,
+            // then we are stuck in an infinite loop
+            if(stackTrace.Contains(this)) {
+                return null;
+            }
+            stackTrace.Add(this);
+
             // get the inputs ready, (recursive)
 
             // the results array should never contain null, because they
@@ -31,7 +41,7 @@ namespace LogicGateNodes {
                 }
 
                 // get the values of the input
-                bool? output = Inputs[i].GetOutput();
+                bool? output = Inputs[i].GetOutput(stackTrace);
 
                 // if any single one of our inputs is giving us null, the
                 // circuit is open.
@@ -39,7 +49,7 @@ namespace LogicGateNodes {
                     return null;
                 }
                 else {
-                    InputResults[i] = (bool)Inputs[i].GetOutput();
+                    InputResults[i] = (bool) output;
                 }
             }
 
