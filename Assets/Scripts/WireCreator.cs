@@ -72,18 +72,25 @@ public class WireCreator : MonoBehaviour {
     // attempts to connect the existing wires. If the
     // connection fails, then it clears the current
     // creation data.
-    public void AttemptConnection() {
+    public bool AttemptConnection() {
         if(InputNode == null || OutputNode == null) {
-            Debug.LogError("Attempted faulty connection");
+            Reset();
+            return false;
         }
 
-        InputNode.SetInput(OutputNode);
+
+
+        if(!InputNode.SetInput(OutputNode)) {
+            Reset();
+            return false;
+        }
 
         InputNode = null;
         OutputNode = null;
         CreatorState = State.Inactive;
         wireObject = null;
         wireObjectComponent = null;
+        return true;
     }
 
     public void Reset() {

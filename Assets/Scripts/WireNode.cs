@@ -15,9 +15,15 @@ public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         get { return _isInput; }
     }
 
+    [SerializeField]
+    private int inputPortNumber;
+
     void Start() {
         logicMonoBehaviourComponent = transform.parent.GetComponent<LogicNodeBehavior>();
-        logicNode = logicMonoBehaviourComponent?.Node;
+
+        if(logicMonoBehaviourComponent != null) {
+            logicNode = logicMonoBehaviourComponent.Node;
+        }
 
         blinker = transform.Find("Power").gameObject;
 
@@ -62,12 +68,18 @@ public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         }
     }
 
-    public void SetInput(WireNode other) {
+    public bool SetInput(WireNode other) {
         if(!_isInput) {
             Debug.LogWarning("Tried to set an input from an output");
+            return false;
+        }
+        else if(logicMonoBehaviourComponent == other.logicMonoBehaviourComponent) {
+            Debug.Log("Can't connect to self!");
+            return false;
         }
         else {
-            logicMonoBehaviourComponent.SetInput(0, other.logicMonoBehaviourComponent);
+            logicMonoBehaviourComponent.SetInput(inputPortNumber, other.logicMonoBehaviourComponent);
+            return true;
         }
     }
 
