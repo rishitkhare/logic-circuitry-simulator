@@ -9,6 +9,9 @@ public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
     private GameObject blinker;
 
+    // the wire that is attached to this node
+    private GameObject wire;
+
     [SerializeField]
     private bool _isInput;
     public bool isInput {
@@ -68,7 +71,7 @@ public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         }
     }
 
-    public bool SetInput(WireNode other) {
+    public bool SetInput(WireNode other, GameObject wireObject) {
         if(!_isInput) {
             Debug.LogWarning("Tried to set an input from an output");
             return false;
@@ -79,6 +82,14 @@ public class WireNode : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         }
         else {
             logicMonoBehaviourComponent.SetInput(inputPortNumber, other.logicMonoBehaviourComponent);
+
+            // each input can only have one source
+            if(wire != null) {
+                Destroy(wire);
+            }
+
+            wire = wireObject;
+
             return true;
         }
     }

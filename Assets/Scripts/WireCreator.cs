@@ -80,7 +80,7 @@ public class WireCreator : MonoBehaviour {
 
 
 
-        if(!InputNode.SetInput(OutputNode)) {
+        if(!InputNode.SetInput(OutputNode, wireObject)) {
             Reset();
             return false;
         }

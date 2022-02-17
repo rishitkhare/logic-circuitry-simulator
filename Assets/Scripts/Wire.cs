@@ -27,6 +27,17 @@ public class Wire : MonoBehaviour {
         UpdateColor();
     }
 
+    // turn off all blinkers once the wire is destroyed
+    void OnDestroy() {
+        if (InputNode != null) {
+            InputNode.SetBlinker(false);
+        }
+
+        if (OutputNode != null) {
+            OutputNode.SetBlinker(false);
+        }
+    }
+
     private void UpdateColor() {
         if(OutputNode != null) {
             bool? nodeValue = OutputNode.GetOutput();
