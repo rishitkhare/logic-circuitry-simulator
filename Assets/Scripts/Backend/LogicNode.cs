@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 namespace LogicGateNodes {
     /*
@@ -14,16 +15,30 @@ namespace LogicGateNodes {
         // stores the input signals being recieved
         public LogicNode[] Inputs;
 
+        private bool oldState;
+
         // Getting the output involves taking all the inputs and synthesizing.
         // If any part of the circuit is open, return null.
 
-        public bool? GetOutput() { return GetOutput(new List<LogicNode>()); }
+        public bool? GetOutput() {
+
+            bool? outputResult = GetOutput(new List<LogicNode>());
+
+            if(outputResult == null) {
+                oldState = false;
+            }
+            else {
+                oldState = (bool) outputResult;
+            }
+
+            return outputResult;
+        }
 
         public bool? GetOutput(List<LogicNode> stackTrace) {
             // if we have already tried getting the output of this node,
             // then we are stuck in an infinite loop
             if(stackTrace.Contains(this)) {
-                return null;
+                return oldState;
             }
             stackTrace.Add(this);
 
@@ -52,6 +67,8 @@ namespace LogicGateNodes {
                     InputResults[i] = (bool) output;
                 }
             }
+
+            stackTrace.Remove(this);
 
             // we only reach this point if the circuit is closed
             return PerformOperation(InputResults);
