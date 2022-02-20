@@ -10,6 +10,8 @@ public class WireCreator : MonoBehaviour {
     
     public static WireCreator instance;
 
+    public bool straightLines;
+
     [SerializeField]
     private GameObject wirePrefab;
 
